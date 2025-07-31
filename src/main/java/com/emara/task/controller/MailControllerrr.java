@@ -1,6 +1,6 @@
 package com.emara.task.controller;
 
-import com.emara.task.mode.MailStructure;
+import com.emara.task.model.MailStructure;
 import com.emara.task.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

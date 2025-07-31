@@ -1,4 +1,4 @@
-package com.emara.task.mode;
+package com.emara.task.model;
 
 import lombok.Getter;
 import lombok.Setter;
