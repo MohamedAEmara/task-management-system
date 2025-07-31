@@ -28,5 +28,25 @@ modules:
     - jwt
     - Lombok
     
-     
+
+POST: /auth/signup
+POST: /auth/verify
+POST: /auth/login
+POST: /auth/logout
+
+
+POST: /department   (ADMIN)
+PATCH: /department  (ADMIN)
+GET: /department
+GET: /department/{id}
+
+
+POST: /user/promote/{user_id}    (ADMIN)
+
+POST: /department/add/{user_id}     (MANAGER)
+POST: /department/remove/{user_id}  (MANAGER)
+
+GET: /my-department
+GET: /my-manager    (EMPLOYEE)
+GET: /my-employees  (MANAGER)
 
