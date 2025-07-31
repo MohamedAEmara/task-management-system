@@ -1,0 +1,32 @@
+Users:
+    - id            int
+    - username      string
+    - email         string
+    - password      string
+    - role          {EMPLOYEE, MANAGER}
+    - verified      boolean
+    - createdAt     date 
+    
+
+Tasks: 
+    - id            int
+    - title         string
+    - description   string
+    - status        {IN_PROGRESS, COMPLETED}
+    - priority      {LOW, MEDIUM, HIGH}
+    - assignee      user_id 
+    - created_at    date
+    - updated_at    date
+
+modules:    
+    - Spring Web 
+    - Spring Security 
+    - Flyway 
+    - PostgreSQL
+    - Redis 
+    - gmail service to send OTP token
+    - jwt
+    - Lombok
+    
+     
+
