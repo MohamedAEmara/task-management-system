@@ -1,5 +1,8 @@
 package com.emara.task.service;
 
+
+import com.emara.task.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

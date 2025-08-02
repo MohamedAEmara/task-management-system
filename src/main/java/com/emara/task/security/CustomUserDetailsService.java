@@ -3,6 +3,7 @@ package com.emara.task.security;
 import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,7 +23,12 @@ public class CustomUserDetailsService implements UserDetailsService{
                         .findByUsername(username)
                         .orElseThrow(() -> 
                                 new UsernameNotFoundException("User not found with username: " + username));
-                                
+        if (!user.isVerified()) {
+            throw new DisabledException("User is not verified");
+        }
+        if (user.getRole() == null) {
+            throw new IllegalStateException("User role is not set");
+        }
         return new org.springframework.security.core.userdetails.User(
             user.getUsername(),
             user.getPassword(),

@@ -27,9 +27,6 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    // @Column(name = "user_id")
-    // private Integer userId;
-
     @OneToOne
     @MapsId
     @JoinColumn(name = "user_id")
