@@ -55,4 +55,9 @@ public class AuthController {
     public ResponseEntity<LoginResponseDto> login(@RequestBody LoginRequestDto request) {
         return userService.loginUser(request);
     }
+
+    @PostMapping("/resend-otp")
+    public ResponseEntity<?> resendOtp(@RequestBody VerifyAccountRequestDto request) {
+        return userService.resendOtp(request);
+    }
 }

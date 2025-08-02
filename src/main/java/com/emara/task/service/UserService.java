@@ -3,6 +3,7 @@ package com.emara.task.service;
 import com.emara.task.dto.LoginRequestDto;
 import com.emara.task.dto.LoginResponseDto;
 import com.emara.task.dto.SignupEmployeeDto;
+import com.emara.task.dto.VerifyAccountRequestDto;
 import com.emara.task.model.Employee;
 import com.emara.task.model.MailStructure;
 import com.emara.task.model.Role;
@@ -13,6 +14,7 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import com.emara.task.security.JwtUtil;
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,7 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -128,6 +131,34 @@ public class UserService {
         } catch (Exception e) {
             System.out.println("Authentication error: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponseDto("Login failed: " + e.getMessage(), 500, null));
+        }
+    }
+
+    public ResponseEntity<?> resendOtp(VerifyAccountRequestDto request) {
+        try {
+            if (request.getUsername() == null) {
+                throw new BadRequestException("Username not found!");
+            }
+            User user = userRepository.findByUsername(request.getUsername()).orElseThrow(
+                    () -> {
+                        throw new UsernameNotFoundException("User not found!");
+                    }
+            );
+
+            String otp = authService.generateOtp();
+            String redisKey = "verify-" + user.getEmail();
+            redisTemplate.opsForValue().set(redisKey, otp, 10, TimeUnit.MINUTES);
+
+            // Send email with OTP
+            MailStructure mailStructure = new MailStructure();
+            mailStructure.setSubject("Email Verification");
+            mailStructure.setMessage("Your OTP for email verification is: " + otp);
+            mailService.sendMail(user.getEmail(), mailStructure);
+
+            return ResponseEntity.ok("Verification resent successfully!");
+        } catch (Exception ex) {
+            System.out.println("Error in resending verification: " + ex.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponseDto("Login failed: " + ex.getMessage(), 500, null));
         }
     }
 }
