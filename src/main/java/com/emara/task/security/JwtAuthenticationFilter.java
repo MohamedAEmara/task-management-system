@@ -47,6 +47,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
                 log.error("JWT validation failed: {}", ex.getMessage());
             }
         }
+        
+        // Always continue the filter chain
+        filterChain.doFilter(request, response);
     }
     
     

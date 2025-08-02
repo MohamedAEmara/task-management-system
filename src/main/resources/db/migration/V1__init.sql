@@ -9,7 +9,8 @@ CREATE TABLE users (
 ) ENGINE=InnoDB;
 
 CREATE TABLE managers (
-    user_id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL UNIQUE,
     level VARCHAR(50),
     office_location VARCHAR(100),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
@@ -23,7 +24,8 @@ CREATE TABLE departments (
 ) ENGINE=InnoDB;
 
 CREATE TABLE employees (
-    user_id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL UNIQUE,
     department_id INT,
     hire_date DATE,
     FOREIGN KEY (department_id) REFERENCES departments(id) ON DELETE SET NULL,
