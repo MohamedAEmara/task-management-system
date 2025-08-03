@@ -29,24 +29,25 @@ modules:
     - Lombok
     
 
-POST: /auth/signup
-POST: /auth/verify
-POST: /auth/login
-POST: /auth/logout
+POST: /auth/signup          (DONE)
+POST: /auth/verify          (DONE)
+POST: /auth/resend-otp      (DONE)
+POST: /auth/login           (DONE)
 
+POST: /users/promote    "promote suer to be a manager"
+POST: /users/demote     "demote user to be an employee"
+cvtg y56hv s3edxcrf5tghv cfr4e3dfcedd2w fr4hyu6yufed w
+es
+wd
+wqedr
+wqr
 
-POST: /department   (ADMIN)
-PATCH: /department  (ADMIN)
-GET: /department
-GET: /department/{id}
+qewr
 
-
-POST: /user/promote/{user_id}    (ADMIN)
-
-POST: /department/add/{user_id}     (MANAGER)
-POST: /department/remove/{user_id}  (MANAGER)
-
+3e
+fewTrer
+'
 GET: /my-department
-GET: /my-manager    (EMPLOYEE)
-GET: /my-employees  (MANAGER)
+GET: /my-manager    "EMPLOYEE"
+GET: /my-employees  "MANAGER"
 

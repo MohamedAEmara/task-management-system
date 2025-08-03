@@ -4,10 +4,7 @@ import com.emara.task.dto.LoginRequestDto;
 import com.emara.task.dto.LoginResponseDto;
 import com.emara.task.dto.SignupEmployeeDto;
 import com.emara.task.dto.VerifyAccountRequestDto;
-import com.emara.task.model.Employee;
-import com.emara.task.model.MailStructure;
-import com.emara.task.model.Role;
-import com.emara.task.model.User;
+import com.emara.task.model.*;
 import com.emara.task.repo.UserRepository;
 
 import java.util.Optional;
@@ -58,6 +55,9 @@ public class UserService {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private ManagerService managerService;
 
     public User createEmployeeUser(SignupEmployeeDto employeeDto) {
         if (
@@ -136,6 +136,8 @@ public class UserService {
 
     public ResponseEntity<?> resendOtp(VerifyAccountRequestDto request) {
         try {
+            System.out.println("Requssssssssssssssst");
+            System.out.println(request);
             if (request.getUsername() == null) {
                 throw new BadRequestException("Username not found!");
             }
@@ -158,6 +160,40 @@ public class UserService {
             return ResponseEntity.ok("Verification resent successfully!");
         } catch (Exception ex) {
             System.out.println("Error in resending verification: " + ex.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponseDto("Login failed: " + ex.getMessage(), 500, null));
+        }
+    }
+
+
+    public ResponseEntity<?> promoteUser(VerifyAccountRequestDto request) {
+        try {
+            System.out.println("Requssssssssssssssst");
+            System.out.println(request);
+            if (request.getUsername() == null) {
+                throw new BadRequestException("Username not found!");
+            }
+            User user = userRepository.findByUsername(request.getUsername()).orElseThrow(
+                    () -> {
+                        throw new UsernameNotFoundException("User not found!");
+                    }
+            );
+            // Delete employee entity for this user if exists
+            if(user.getRole() == Role.EMPLOYEE) {
+                employeeService.deleteEmployeeEntity(user.getId());
+            }
+
+            // Change role field for this user to "MANAGER"
+            user.setRole(Role.MANAGER);
+
+            // Save updates to DB
+            userRepository.save(user);
+
+            // Create manager entity for this user.
+            Manager manager = managerService.createManagerEntity(user);
+
+            return ResponseEntity.ok("User upgraded successfully" + manager.toString());
+        } catch (Exception ex) {
+            System.out.println("Error in promoting user: " + ex.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponseDto("Login failed: " + ex.getMessage(), 500, null));
         }
     }

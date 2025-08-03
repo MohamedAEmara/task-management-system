@@ -1,21 +1,29 @@
 package com.emara.task.security;
 
-import java.util.HashMap;
-import java.util.Map;
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import io.jsonwebtoken.Jwts;
-import java.util.Date;
 
+import javax.crypto.SecretKey;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class JwtUtil {
-    @Value("${jwt.secret}")
-    private String secret;
+
+    private final SecretKey key;
 
     @Value("${jwt.expiration}")
     private long expiration;
+
+    public JwtUtil(@Value("${jwt.secret}") String base64Secret) {
+        byte[] keyBytes = Decoders.BASE64.decode(base64Secret);
+        this.key = Keys.hmacShaKeyFor(keyBytes); // Enforces correct size
+    }
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
@@ -25,26 +33,27 @@ public class JwtUtil {
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    public boolean validateToken(String token, UserDetails userdetails) {
-        String username = extractUsername(token);
-        return username.equals(userdetails.getUsername()) && !isTokenExpired(token);
+    public boolean validateToken(String token, UserDetails userDetails) {
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
     public String extractUsername(String token) {
         return Jwts.parserBuilder()
-            .setSigningKey(secret.getBytes())
-            .build()
-            .parseClaimsJws(token)
-            .getBody()
-            .getSubject();
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
     }
 
     private boolean isTokenExpired(String token) {
         Date expirationDate = Jwts.parserBuilder()
-                .setSigningKey(secret.getBytes())
+                .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
                 .getBody()
@@ -52,4 +61,3 @@ public class JwtUtil {
         return expirationDate.before(new Date());
     }
 }
-

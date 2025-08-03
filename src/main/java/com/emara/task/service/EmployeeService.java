@@ -13,5 +13,10 @@ public class EmployeeService {
     
     public void addEmployee(Employee employee) {
         employeeRepository.save(employee);
-    }   
+    }
+
+    public void deleteEmployeeEntity(Integer userId) {
+        Employee employee = employeeRepository.findByUserId(userId);
+        employeeRepository.deleteById(employee.getId());
+    }
 }
