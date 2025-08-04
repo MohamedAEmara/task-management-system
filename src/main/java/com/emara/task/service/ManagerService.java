@@ -24,4 +24,9 @@ public class ManagerService {
         Manager manager = managerRepository.findByUserId(userId);
         managerRepository.deleteById(manager.getId());
     }
+
+    public Manager findManagerByUserId(Integer userId) {
+        Manager manager = managerRepository.findByUserId(userId);
+        return manager;
+    }
 }

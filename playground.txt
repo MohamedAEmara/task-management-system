@@ -36,17 +36,10 @@ POST: /auth/login           (DONE)
 
 POST: /users/promote    "promote suer to be a manager"
 POST: /users/demote     "demote user to be an employee"
-cvtg y56hv s3edxcrf5tghv cfr4e3dfcedd2w fr4hyu6yufed w
-es
-wd
-wqedr
-wqr
 
-qewr
+POST: /department
 
-3e
-fewTrer
-'
+
 GET: /my-department
 GET: /my-manager    "EMPLOYEE"
 GET: /my-employees  "MANAGER"

@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "departments")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -36,4 +36,10 @@ public class Department {
 
     @OneToMany
     private List<Employee> employees;
+
+
+    @Override
+    public String toString() {
+        return "id = " + id + "\n" + "name = " + name + "\nmanager = " + manager + "\nemployees = " + employees;
+    }
 }

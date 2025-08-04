@@ -17,8 +17,6 @@ public class DepartmentController {
 
     @PostMapping
     public ResponseEntity<?> createDepartment(@RequestBody CreateDepartmentDto request) {
-        System.out.println("IIIIIIIIIIIIIIIIIIIIIN REQUESSSSSSSSSSSSSSSSSSSSSSSST");
-
         return departmentService.createDepartment(request);
     }
 }
