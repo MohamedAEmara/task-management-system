@@ -18,8 +18,13 @@ public class UserController {
         return "/user endpoint is working";
     }
 
-    @PostMapping
+    @PostMapping("/promote")
     public ResponseEntity<?> promoteUserToManager(@RequestBody VerifyAccountRequestDto requestDto) {
         return userService.promoteUser(requestDto);
+    }
+
+    @PostMapping("/demote")
+    public ResponseEntity<?> demoteUserToEmployee(@RequestBody VerifyAccountRequestDto requestDto) {
+        return userService.demoteUser(requestDto);
     }
 }

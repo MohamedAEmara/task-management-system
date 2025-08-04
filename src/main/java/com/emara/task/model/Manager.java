@@ -31,4 +31,15 @@ public class Manager {
 
     @OneToMany
     private List<Department> departments;
+
+    @Override
+    public String toString() {
+        return "Manager{" +
+                "id=" + id +
+                ", user=" + user +
+                ", departments=" + departments +
+                ", officeLocation=" + officeLocation +
+                ", level=" + level +
+                '}';
+    }
 }

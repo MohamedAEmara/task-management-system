@@ -1,5 +1,7 @@
 package com.emara.task.service;
 
+import com.emara.task.model.Manager;
+import com.emara.task.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,12 @@ public class EmployeeService {
     public void deleteEmployeeEntity(Integer userId) {
         Employee employee = employeeRepository.findByUserId(userId);
         employeeRepository.deleteById(employee.getId());
+    }
+
+    public Employee createEmployeeEntity(User user) {
+        Employee employee = new Employee();
+        employee.setUser(user);
+        employeeRepository.save(employee);
+        return employee;
     }
 }

@@ -83,8 +83,6 @@ public class UserService {
         mailService.sendMail(employeeDto.getEmail(), mailStructure);
 
         User savedUser = userRepository.save(user);
-        System.out.println("User created with ID: " + savedUser.getId());
-        System.out.println(savedUser);
 
         // Create Employee entity 
         Employee emp = new Employee();
@@ -136,8 +134,6 @@ public class UserService {
 
     public ResponseEntity<?> resendOtp(VerifyAccountRequestDto request) {
         try {
-            System.out.println("Requssssssssssssssst");
-            System.out.println(request);
             if (request.getUsername() == null) {
                 throw new BadRequestException("Username not found!");
             }
@@ -159,7 +155,6 @@ public class UserService {
 
             return ResponseEntity.ok("Verification resent successfully!");
         } catch (Exception ex) {
-            System.out.println("Error in resending verification: " + ex.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponseDto("Login failed: " + ex.getMessage(), 500, null));
         }
     }
@@ -167,8 +162,6 @@ public class UserService {
 
     public ResponseEntity<?> promoteUser(VerifyAccountRequestDto request) {
         try {
-            System.out.println("Requssssssssssssssst");
-            System.out.println(request);
             if (request.getUsername() == null) {
                 throw new BadRequestException("Username not found!");
             }
@@ -181,7 +174,9 @@ public class UserService {
             if(user.getRole() == Role.EMPLOYEE) {
                 employeeService.deleteEmployeeEntity(user.getId());
             }
-
+            if (user.getRole() == Role.MANAGER) {
+                managerService.deleteManagerEntity(user.getId());
+            }
             // Change role field for this user to "MANAGER"
             user.setRole(Role.MANAGER);
 
@@ -194,6 +189,41 @@ public class UserService {
             return ResponseEntity.ok("User upgraded successfully" + manager.toString());
         } catch (Exception ex) {
             System.out.println("Error in promoting user: " + ex.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponseDto("Login failed: " + ex.getMessage(), 500, null));
+        }
+    }
+
+    public ResponseEntity<?> demoteUser(VerifyAccountRequestDto request) {
+        try {
+            if (request.getUsername() == null) {
+                throw new BadRequestException("Username not found!");
+            }
+            User user = userRepository.findByUsername(request.getUsername()).orElseThrow(
+                    () -> {
+                        throw new UsernameNotFoundException("User not found!");
+                    }
+            );
+
+            // Delete manager entity for this user if exists
+            if (user.getRole() == Role.MANAGER) {
+                managerService.deleteManagerEntity(user.getId());
+            }
+            if(user.getRole() == Role.EMPLOYEE) {
+                employeeService.deleteEmployeeEntity(user.getId());
+            }
+
+            // Change role field for this user to "EMPLOYEE"
+            user.setRole(Role.EMPLOYEE);
+
+            // Save updates to DB
+            userRepository.save(user);
+
+            // Create employee entity for this user.
+            Employee employee = employeeService.createEmployeeEntity(user);
+
+            return ResponseEntity.ok("User downgraded successfully" + employee.toString());
+        } catch (Exception ex) {
+            System.out.println("Error in demoting user: " + ex.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponseDto("Login failed: " + ex.getMessage(), 500, null));
         }
     }

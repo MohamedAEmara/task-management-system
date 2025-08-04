@@ -1,5 +1,6 @@
 package com.emara.task.service;
 
+import com.emara.task.model.Employee;
 import com.emara.task.model.Manager;
 import com.emara.task.model.User;
 import com.emara.task.repo.ManagerRepository;
@@ -17,5 +18,10 @@ public class ManagerService {
         manager.setUser(user);
         managerRepository.save(manager);
         return manager;
+    }
+
+    public void deleteManagerEntity(Integer userId) {
+        Manager manager = managerRepository.findByUserId(userId);
+        managerRepository.deleteById(manager.getId());
     }
 }
