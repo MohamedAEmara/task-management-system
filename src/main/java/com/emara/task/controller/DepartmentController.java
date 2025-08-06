@@ -1,5 +1,6 @@
 package com.emara.task.controller;
 
+import com.emara.task.dto.AddEmployeeToDepartmentDto;
 import com.emara.task.dto.CreateDepartmentDto;
 import com.emara.task.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,15 @@ public class DepartmentController {
     @PostMapping
     public ResponseEntity<?> createDepartment(@RequestBody CreateDepartmentDto request) {
         return departmentService.createDepartment(request);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<?> addEmployeeToDepartment(@RequestBody AddEmployeeToDepartmentDto request) {
+        return departmentService.addEmployeeToDepartment(request);
+    }
+
+    @PostMapping("/remove")
+    public ResponseEntity<?> removeEmployeeFromDepartment(@RequestBody AddEmployeeToDepartmentDto request) {
+        return departmentService.removeEmployeeFromDepartment(request);
     }
 }

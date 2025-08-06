@@ -28,4 +28,12 @@ public class EmployeeService {
         employeeRepository.save(employee);
         return employee;
     }
+
+    public Employee findByUserId(Integer userId) {
+        return employeeRepository.findByUserId(userId);
+    }
+
+    public Employee save(Employee employee) {
+        return employeeRepository.save(employee);
+    }
 }

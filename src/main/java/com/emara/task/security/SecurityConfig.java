@@ -28,7 +28,9 @@ public class SecurityConfig {
                     .requestMatchers("/auth/**").permitAll()
                     .requestMatchers("/mail/**").permitAll() // Allow mail endpoints for testing
 //                    .requestMatchers("/department/add/**", "/department/remove/**").hasRole("MANAGER")
-                    .requestMatchers("/department/**").hasRole("ADMIN")
+                    .requestMatchers("/department").hasRole("ADMIN")
+                    .requestMatchers("/department/add").hasRole("MANAGER")
+                    .requestMatchers("/department/remove").hasRole("MANAGER")
                     .requestMatchers("/my-department", "/my-manager").hasRole("EMPLOYEE")
                     .requestMatchers("/my-employees").hasRole("MANAGER")
                     .requestMatchers("/user/**").hasRole("ADMIN")

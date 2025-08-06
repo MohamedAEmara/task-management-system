@@ -59,6 +59,9 @@ public class UserService {
     @Autowired
     private ManagerService managerService;
 
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow();
+    }
     public User createEmployeeUser(SignupEmployeeDto employeeDto) {
         if (
             userRepository.findByUsername(employeeDto.getUsername()).isPresent() || 

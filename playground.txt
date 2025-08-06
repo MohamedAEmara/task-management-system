@@ -39,6 +39,9 @@ POST: /users/demote     "demote user to be an employee"
 
 POST: /department
 
+POST: /department/add
+POST: /department/remove
+
 
 GET: /my-department
 GET: /my-manager    "EMPLOYEE"
