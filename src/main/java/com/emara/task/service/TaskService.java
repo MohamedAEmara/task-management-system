@@ -2,6 +2,7 @@ package com.emara.task.service;
 
 import com.emara.task.dto.AssignTaskDto;
 import com.emara.task.dto.TaskDto;
+import com.emara.task.dto.TaskStatusDto;
 import com.emara.task.model.*;
 import com.emara.task.repo.TaskRepository;
 import com.emara.task.security.JwtUtil;
@@ -95,6 +96,40 @@ public class TaskService {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return ResponseEntity.status(500).body("Error assigning the task to the employee: " + ex.getMessage());
+        }
+    }
+
+    public ResponseEntity<?> updateStatus(TaskStatusDto taskStatusDto) {
+        try {
+            if(taskStatusDto.getTaskId() == null || taskStatusDto.getStatus() == null) {
+                throw new Exception("Missing fields taskId or status!");
+            }
+            User user = userService.findByUsername(jwtUtil.getUser().getUsername());
+            Employee employee = employeeService.findByUserId(user.getId());
+            Task task = taskRepository.findById(taskStatusDto.getTaskId()).orElseThrow();
+            if(employee == null) {
+                throw new Exception("User not found!");
+            }
+
+            if(task.getAssignedTo() != employee) {
+                throw new Exception("Wrong task ID");
+            }
+
+            if(
+                taskStatusDto.getStatus() != TaskStatus.PENDING
+                && taskStatusDto.getStatus() != TaskStatus.IN_PROGRESS
+                && taskStatusDto.getStatus() != TaskStatus.COMPLETED
+            ) {
+                throw new Exception("Status must be one of the following: {PENDING, IN_PROGRESS, COMPLETED}");
+            }
+
+            task.setStatus(taskStatusDto.getStatus());
+            taskRepository.save(task);
+
+            return ResponseEntity.ok(task);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return ResponseEntity.status(500).body("Error updating task status: " + ex.getMessage());
         }
     }
 }

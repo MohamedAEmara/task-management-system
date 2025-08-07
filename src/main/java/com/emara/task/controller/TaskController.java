@@ -2,6 +2,7 @@ package com.emara.task.controller;
 
 import com.emara.task.dto.AssignTaskDto;
 import com.emara.task.dto.TaskDto;
+import com.emara.task.dto.TaskStatusDto;
 import com.emara.task.model.Task;
 import com.emara.task.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,11 @@ public class TaskController {
     @PostMapping("/assign")
     public ResponseEntity<?> assignTaskToEmployee(@RequestBody AssignTaskDto assignTaskDto) {
         return taskService.assignTaskToEmployee(assignTaskDto);
+    }
+
+    @PatchMapping
+    public ResponseEntity<?> updateStatus(@RequestBody TaskStatusDto taskStatusDto) {
+        System.out.println("PATCH /task called with taskId: " + taskStatusDto.getTaskId() + ", status: " + taskStatusDto.getStatus());
+        return taskService.updateStatus(taskStatusDto);
     }
 }
