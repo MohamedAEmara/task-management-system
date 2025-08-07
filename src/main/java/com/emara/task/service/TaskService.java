@@ -1,10 +1,7 @@
 package com.emara.task.service;
 
 import com.emara.task.dto.TaskDto;
-import com.emara.task.model.Manager;
-import com.emara.task.model.Task;
-import com.emara.task.model.TaskStatus;
-import com.emara.task.model.User;
+import com.emara.task.model.*;
 import com.emara.task.repo.TaskRepository;
 import com.emara.task.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class TaskService {
@@ -48,5 +47,22 @@ public class TaskService {
            return ResponseEntity.status(500).body("Error creating new task: " + ex.getMessage());
        }
 
+    }
+
+    public ResponseEntity<?> getMyTasks() {
+        try {
+            UserDetails userDetails = jwtUtil.getUser();
+            User user = userService.findByUsername(userDetails.getUsername());
+            List<Task> tasks = new ArrayList<>();
+            if(user.getRole() == Role.EMPLOYEE) {
+                tasks = taskRepository.getEmployeeTasks(user.getId());
+            } else if(user.getRole() == Role.MANAGER) {
+                tasks = taskRepository.getManagerTasks(user.getId());
+            }
+            return ResponseEntity.ok(tasks);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return ResponseEntity.status(500).body("Error fetching user tasks: " + ex.getMessage());
+        }
     }
 }
