@@ -32,12 +32,20 @@ public class DepartmentService {
     private JwtUtil jwtUtil;
 
     public ResponseEntity<?> createDepartment(CreateDepartmentDto request) {
-        Department department = new Department();
-        department.setName(request.getName());
-        Manager manager = managerService.findManagerByUserId(request.getUserId());
-        department.setManager(manager);
-        departmentRepository.save(department);
-        return ResponseEntity.ok(department);
+        try {
+            Department department = new Department();
+            department.setName(request.getName());
+            Manager manager = managerService.findManagerByUserId(request.getUserId());
+            if(manager == null) {
+                throw new Exception("Cannot find manager with this userId!");
+            }
+            department.setManager(manager);
+            departmentRepository.save(department);
+            return ResponseEntity.ok(department);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return ResponseEntity.status(500).body("Error creating new department: " + ex.getMessage());
+        }
     }
 
     public ResponseEntity<?> addEmployeeToDepartment(AddEmployeeToDepartmentDto dto) {

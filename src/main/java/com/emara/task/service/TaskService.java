@@ -1,5 +1,6 @@
 package com.emara.task.service;
 
+import com.emara.task.dto.AssignTaskDto;
 import com.emara.task.dto.TaskDto;
 import com.emara.task.model.*;
 import com.emara.task.repo.TaskRepository;
@@ -26,6 +27,9 @@ public class TaskService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     public ResponseEntity<?> createTask(TaskDto taskDto) {
        try {
@@ -63,6 +67,34 @@ public class TaskService {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return ResponseEntity.status(500).body("Error fetching user tasks: " + ex.getMessage());
+        }
+    }
+
+    public ResponseEntity<?> assignTaskToEmployee(AssignTaskDto assignTaskDto) {
+        try {
+            if(assignTaskDto.getTaskId() == null || assignTaskDto.getUserId() == null) {
+                throw new Exception("Missing fields taskId or userId!");
+            }
+            User user = userService.findByUsername(jwtUtil.getUser().getUsername());
+            Manager manager = managerService.findManagerByUserId(user.getId());
+            // Verify task belong to this Manager
+            Task task = taskRepository.findById(assignTaskDto.getTaskId()).orElseThrow();
+            // Verify employee belong to a department of this manager
+            Employee employee = employeeService.findByUserId(assignTaskDto.getUserId());
+            if(employee == null) {
+                throw new Exception("Employee not found!");
+            }
+            if(employee.getDepartment().getManager() != manager) {
+                throw new Exception("You are not a manager for this employee!");
+            }
+
+            // Assign task to this employee
+            task.setAssignedTo(employee);
+            taskRepository.save(task);
+            return ResponseEntity.ok(task);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return ResponseEntity.status(500).body("Error assigning the task to the employee: " + ex.getMessage());
         }
     }
 }

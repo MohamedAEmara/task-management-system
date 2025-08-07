@@ -1,5 +1,6 @@
 package com.emara.task.controller;
 
+import com.emara.task.dto.AssignTaskDto;
 import com.emara.task.dto.TaskDto;
 import com.emara.task.model.Task;
 import com.emara.task.service.TaskService;
@@ -21,5 +22,10 @@ public class TaskController {
     @GetMapping
     public ResponseEntity<?> getMyTasks() {
         return taskService.getMyTasks();
+    }
+
+    @PostMapping("/assign")
+    public ResponseEntity<?> assignTaskToEmployee(@RequestBody AssignTaskDto assignTaskDto) {
+        return taskService.assignTaskToEmployee(assignTaskDto);
     }
 }
