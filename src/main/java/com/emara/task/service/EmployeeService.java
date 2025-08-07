@@ -1,5 +1,6 @@
 package com.emara.task.service;
 
+import com.emara.task.model.Department;
 import com.emara.task.model.Manager;
 import com.emara.task.model.User;
 import org.springframework.beans.factory.annotation.Autowired;

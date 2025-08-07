@@ -2,10 +2,7 @@ package com.emara.task.service;
 
 import com.emara.task.dto.AddEmployeeToDepartmentDto;
 import com.emara.task.dto.CreateDepartmentDto;
-import com.emara.task.model.Department;
-import com.emara.task.model.Employee;
-import com.emara.task.model.Manager;
-import com.emara.task.model.User;
+import com.emara.task.model.*;
 import com.emara.task.repo.DepartmentRepository;
 import com.emara.task.security.JwtUtil;
 import jakarta.persistence.EntityNotFoundException;
@@ -131,4 +128,28 @@ public class DepartmentService {
         }
     }
 
+    public ResponseEntity<List<Department>> getAll() {
+        return ResponseEntity.ok(departmentRepository.getAll());
+    }
+
+
+    public ResponseEntity<?> getMyDepartment() {
+        try {
+            UserDetails userDetails = jwtUtil.getUser();
+            User user = userService.findByUsername(userDetails.getUsername());
+            List<Department> departments = new ArrayList<>();
+            if(user.getRole() == Role.EMPLOYEE) {
+                Employee employee = employeeService.findByUserId(user.getId());
+                Department department = employee.getDepartment();
+                departments.add(department);
+            } else if(user.getRole() == Role.MANAGER) {
+                Manager manager = managerService.findManagerByUserId(user.getId());
+                departments = departmentRepository.findByManagerId(manager.getId());
+            }
+            return ResponseEntity.ok(departments);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return ResponseEntity.status(500).body("Error adding employee to department: " + ex.getMessage());
+        }
+    }
 }
