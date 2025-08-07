@@ -149,7 +149,7 @@ public class DepartmentService {
             return ResponseEntity.ok(departments);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-            return ResponseEntity.status(500).body("Error adding employee to department: " + ex.getMessage());
+            return ResponseEntity.status(500).body("Error getting departments: " + ex.getMessage());
         }
     }
 }

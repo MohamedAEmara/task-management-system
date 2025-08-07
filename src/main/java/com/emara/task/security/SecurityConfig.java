@@ -36,8 +36,7 @@ public class SecurityConfig {
                     .requestMatchers("/my-department", "/my-manager").hasRole("EMPLOYEE")
                     .requestMatchers("/my-employees").hasRole("MANAGER")
                     .requestMatchers("/user/**").hasRole("ADMIN")
-
-                    // .anyRequest().authenticated()
+                    .requestMatchers(HttpMethod.POST, "/task").hasRole("MANAGER")
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
