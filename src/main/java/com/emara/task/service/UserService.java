@@ -1,9 +1,6 @@
 package com.emara.task.service;
 
-import com.emara.task.dto.LoginRequestDto;
-import com.emara.task.dto.LoginResponseDto;
-import com.emara.task.dto.SignupEmployeeDto;
-import com.emara.task.dto.VerifyAccountRequestDto;
+import com.emara.task.dto.*;
 import com.emara.task.model.*;
 import com.emara.task.repo.UserRepository;
 
@@ -228,6 +225,63 @@ public class UserService {
         } catch (Exception ex) {
             System.out.println("Error in demoting user: " + ex.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponseDto("Login failed: " + ex.getMessage(), 500, null));
+        }
+    }
+
+    public ResponseEntity<?> forgotPassword (VerifyAccountRequestDto dto) {
+        try {
+            if(dto.getUsername() == null) {
+                throw new Exception("Username not found!");
+            }
+            Optional<User> userOpt = userRepository.findByUsername(dto.getUsername());
+            if(userOpt.isEmpty()) {
+                throw new Exception("User not found!");
+            }
+            String reset = authService.generateOtp();
+            String redisKey = "reset-" + userOpt.get().getEmail();
+            redisTemplate.opsForValue().set(redisKey, reset, 10, TimeUnit.MINUTES);
+
+            // Send email with OTP
+            MailStructure mailStructure = new MailStructure();
+            mailStructure.setSubject("Email Verification");
+            mailStructure.setMessage("Your OTP for reset password: " + reset);
+            mailService.sendMail(userOpt.get().getEmail(), mailStructure);
+            return ResponseEntity.ok("OTP for password reset sent successfully!");
+        } catch (Exception ex) {
+            System.out.println("Error resetting password: " + ex.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponseDto("Failed to resent verify password OTP: " + ex.getMessage(), 500, null));
+        }
+    }
+
+    public ResponseEntity<?> updatePassword(UpdatePasswordDto updatePasswordDto) {
+        try {
+            if(
+                updatePasswordDto.getUsername() == null ||
+                updatePasswordDto.getNewPassword() == null ||
+                updatePasswordDto.getOtp() == null
+            ) {
+                throw new Exception("Missing required fields {username, newPassword, otp}");
+            }
+            Optional<User> userOpt = userRepository.findByUsername(updatePasswordDto.getUsername());
+            if(userOpt.isEmpty()) {
+                throw new Exception("User not found!");
+            }
+            User user = userOpt.get();
+            String redisKey = "reset-" + user.getEmail();
+            String redisOtp = redisTemplate.opsForValue().getAndDelete(redisKey);
+
+            if(redisOtp.equals(updatePasswordDto.getOtp())) {
+                user.setVerified(true);
+                userRepository.save(user);
+            } else {
+                throw new RuntimeException("Wrong OPT");
+            }
+            user.setPassword(updatePasswordDto.getNewPassword());
+            userRepository.save(user);
+            return ResponseEntity.ok("User password updated successfully");
+        } catch (Exception ex) {
+            System.out.println("Error resetting password: " + ex.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponseDto("Failed to updated password: " + ex.getMessage(), 500, null));
         }
     }
 }
