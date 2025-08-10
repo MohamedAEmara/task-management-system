@@ -6,6 +6,8 @@ import com.emara.task.model.User;
 import com.emara.task.repo.ManagerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CacheEvict;
 
 @Service
 public class ManagerService {
@@ -20,12 +22,15 @@ public class ManagerService {
         return manager;
     }
 
+    @CacheEvict(value = "managers", key = "'userId:' + #userId")
     public void deleteManagerEntity(Integer userId) {
         Manager manager = managerRepository.findByUserId(userId);
         managerRepository.deleteById(manager.getId());
     }
 
+    @Cacheable(value = "managers", key = "'userId:' + #userId")
     public Manager findManagerByUserId(Integer userId) {
+        System.out.println("Cache miss: Loading manager from database for userId: " + userId);
         Manager manager = managerRepository.findByUserId(userId);
         return manager;
     }

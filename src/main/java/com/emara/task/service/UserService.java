@@ -22,6 +22,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 
 
 @Service
@@ -56,8 +59,16 @@ public class UserService {
     @Autowired
     private ManagerService managerService;
 
+    @Cacheable(value = "users", key = "'username:' + #username")
     public User findByUsername(String username) {
+        System.out.println("Cache miss: Loading user from database for username: " + username);
         return userRepository.findByUsername(username).orElseThrow();
+    }
+    
+    @Cacheable(value = "users", key = "'email:' + #email")
+    public User findByEmail(String email) {
+        System.out.println("Cache miss: Loading user from database for email: " + email);
+        return userRepository.findByEmail(email).orElseThrow();
     }
     public User createEmployeeUser(SignupEmployeeDto employeeDto) {
         if (
@@ -107,6 +118,9 @@ public class UserService {
         if(redisOtp.equals(otp)) {
             user.get().setVerified(true);
             userRepository.save(user.get());
+            // Evict cache for this user
+            evictUserCacheByUsername(user.get().getUsername());
+            evictUserCacheByEmail(user.get().getEmail());
         } else {
             throw new RuntimeException("Wrong OPT");
         }
@@ -182,6 +196,9 @@ public class UserService {
 
             // Save updates to DB
             userRepository.save(user);
+            // Evict cache for this user
+            evictUserCacheByUsername(user.getUsername());
+            evictUserCacheByEmail(user.getEmail());
 
             // Create manager entity for this user.
             Manager manager = managerService.createManagerEntity(user);
@@ -217,6 +234,9 @@ public class UserService {
 
             // Save updates to DB
             userRepository.save(user);
+            // Evict cache for this user
+            evictUserCacheByUsername(user.getUsername());
+            evictUserCacheByEmail(user.getEmail());
 
             // Create employee entity for this user.
             Employee employee = employeeService.createEmployeeEntity(user);
@@ -278,10 +298,30 @@ public class UserService {
             }
             user.setPassword(updatePasswordDto.getNewPassword());
             userRepository.save(user);
+            // Evict cache for this user
+            evictUserCacheByUsername(user.getUsername());
+            evictUserCacheByEmail(user.getEmail());
             return ResponseEntity.ok("User password updated successfully");
         } catch (Exception ex) {
             System.out.println("Error resetting password: " + ex.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new LoginResponseDto("Failed to updated password: " + ex.getMessage(), 500, null));
         }
+    }
+    
+    // Helper method to evict user caches
+    @CacheEvict(value = "users", allEntries = false)
+    private void evictUserCaches(String username, String email) {
+        // This will be called to evict specific user cache entries
+        System.out.println("Evicting cache for user: " + username);
+    }
+    
+    @CacheEvict(value = "users", key = "'username:' + #username")
+    public void evictUserCacheByUsername(String username) {
+        System.out.println("Evicted cache for username: " + username);
+    }
+    
+    @CacheEvict(value = "users", key = "'email:' + #email")
+    public void evictUserCacheByEmail(String email) {
+        System.out.println("Evicted cache for email: " + email);
     }
 }
