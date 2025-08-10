@@ -7,13 +7,14 @@ import com.emara.task.model.*;
 import com.emara.task.repo.TaskRepository;
 import com.emara.task.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class TaskService {
@@ -54,16 +55,30 @@ public class TaskService {
 
     }
 
-    public ResponseEntity<?> getMyTasks() {
+    public ResponseEntity<?> getMyTasks(int page, int size, TaskStatus status) {
         try {
             UserDetails userDetails = jwtUtil.getUser();
             User user = userService.findByUsername(userDetails.getUsername());
-            List<Task> tasks = new ArrayList<>();
+
+            Pageable pageable = PageRequest.of(page, size);
+            Page<Task> tasks;
+
             if(user.getRole() == Role.EMPLOYEE) {
-                tasks = taskRepository.getEmployeeTasks(user.getId());
+                if (status != null) {
+                    tasks = taskRepository.findByAssignedTo_User_IdAndStatus(user.getId(), status, pageable);
+                } else {
+                    tasks = taskRepository.findByAssignedTo_User_Id(user.getId(), pageable);
+                }
             } else if(user.getRole() == Role.MANAGER) {
-                tasks = taskRepository.getManagerTasks(user.getId());
+                if (status != null) {
+                    tasks = taskRepository.findByAssignedFrom_User_IdAndStatus(user.getId(), status, pageable);
+                } else {
+                    tasks = taskRepository.findByAssignedFrom_User_Id(user.getId(), pageable);
+                }
+            } else {
+                return ResponseEntity.badRequest().body("Invalid Role!");
             }
+
             return ResponseEntity.ok(tasks);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

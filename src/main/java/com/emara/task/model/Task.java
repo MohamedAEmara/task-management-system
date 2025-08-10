@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -28,10 +29,12 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "assigned_from", referencedColumnName = "user_id")
+    @JsonIgnoreProperties({"assignedTasks", "departments"})
     private Manager assignedFrom;
 
     @ManyToOne
     @JoinColumn(name = "assigned_to", referencedColumnName = "user_id")
+    @JsonIgnoreProperties({"assignedTasks", "department"})
     private Employee assignedTo;
 
     @Column(name = "created_at")

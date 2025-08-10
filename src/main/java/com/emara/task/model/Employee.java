@@ -15,6 +15,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -34,10 +38,15 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "department_id")
+    @JsonIgnoreProperties({"employees", "manager"})
     private Department department;
 
     @Column(name = "hire_date")
     private LocalDate hireDate;
+
+    @OneToMany(mappedBy = "assignedTo")
+    @JsonIgnore
+    private List<Task> assignedTasks;
 
     @Override
     public String toString() {

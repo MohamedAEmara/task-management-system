@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,9 +33,11 @@ public class Department {
 
     @ManyToOne
     @JoinColumn(name = "manager_id")
+    @JsonIgnore
     private Manager manager;
 
-    @OneToMany
+    @OneToMany(mappedBy = "department")
+    @JsonIgnore
     private List<Employee> employees;
 
 

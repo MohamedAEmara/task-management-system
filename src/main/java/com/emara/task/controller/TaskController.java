@@ -4,6 +4,7 @@ import com.emara.task.dto.AssignTaskDto;
 import com.emara.task.dto.TaskDto;
 import com.emara.task.dto.TaskStatusDto;
 import com.emara.task.model.Task;
+import com.emara.task.model.TaskStatus;
 import com.emara.task.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +22,14 @@ public class TaskController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getMyTasks() {
-        return taskService.getMyTasks();
+    public ResponseEntity<?> getMyTasks(
+            @RequestParam(defaultValue = "0") String page,
+            @RequestParam(defaultValue = "10") String size,
+            @RequestParam(required = false)TaskStatus status
+    ) {
+        System.out.println(page);
+        System.out.println(size);
+        return taskService.getMyTasks(Integer.parseInt(page), Integer.parseInt(size), status);
     }
 
     @PostMapping("/assign")

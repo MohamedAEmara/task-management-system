@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "managers")
@@ -29,8 +30,13 @@ public class Manager {
     @JoinColumn(name = "user_id") // foreign key = primary key
     private User user;
 
-    @OneToMany
+    @OneToMany(mappedBy = "manager")
+    @JsonIgnore
     private List<Department> departments;
+
+    @OneToMany(mappedBy = "assignedFrom")
+    @JsonIgnore
+    private List<Task> assignedTasks;
 
     @Override
     public String toString() {
