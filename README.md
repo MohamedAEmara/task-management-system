@@ -12,10 +12,11 @@ A comprehensive task management system built with Spring Boot that provides func
 - **Scheduled Notifications**: Daily and weekly notification system for task reminders
 - **Caching**: Redis-based caching for improved performance
 - **Database Migration**: Flyway for database schema versioning
+- **Message Queue**: Asynchronous processing of task updates, notifications, and OTP using RabbitMQ for reliable and scalable communication between services
 
 
 ## Technologies Used
-[![technologies](https://skillicons.dev/icons?i=spring,maven,mysql,hibernate,redis,git,github,docker,postman)](#backend)
+[![technologies](https://skillicons.dev/icons?i=spring,maven,mysql,hibernate,redis,git,github,docker,postman,rabbitmq)](#backend)
 
 ## Database Schema
 ![Database Schema](./src/main/resources/static/images/db-schema.png)
@@ -58,6 +59,7 @@ A comprehensive task management system built with Spring Boot that provides func
 - Maven 3.6+
 - MySQL 8.0
 - Redis 7.2
+- RabbitMQ 3.x (for message queuing)
 - Docker and Docker Compose (optional, for containerized setup)
 
 ## Installation & Setup
@@ -70,10 +72,12 @@ A comprehensive task management system built with Spring Boot that provides func
    $ cd task-management-system
    ```
 
-2. Start the required services (MySQL and Redis):
+2. Start the required services (MySQL, Redis, and RabbitMQ):
    ```bash
    $ docker-compose -f src/main/resources/docker-compose.yml up -d
    ```
+   
+   > **Note**: This will start MySQL, Redis, and RabbitMQ containers. RabbitMQ Management UI will be available at http://localhost:15672 (admin/password)
 
 3. Build and run the application:
    ```bash
@@ -133,6 +137,13 @@ notification.cron.weekly=0 0 10 * * MON
 notification.enabled=true
 ```
 
+### RabbitMQ Configuration
+```properties
+spring.rabbitmq.host=localhost
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=admin
+spring.rabbitmq.password=password
+```
 ## API Endpoints
 
 The application provides REST APIs for:
