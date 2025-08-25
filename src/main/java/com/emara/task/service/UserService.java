@@ -1,5 +1,6 @@
 package com.emara.task.service;
 
+import com.emara.task.config.RabbitMQConfig;
 import com.emara.task.dto.*;
 import com.emara.task.model.*;
 import com.emara.task.repo.UserRepository;
@@ -9,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.emara.task.security.JwtUtil;
 import org.apache.coyote.BadRequestException;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
@@ -59,6 +61,9 @@ public class UserService {
     @Autowired
     private ManagerService managerService;
 
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
     @Cacheable(value = "users", key = "'username:' + #username")
     public User findByUsername(String username) {
         System.out.println("Cache miss: Loading user from database for username: " + username);
@@ -87,11 +92,20 @@ public class UserService {
         String redisKey = "verify-" + employeeDto.getEmail();
         redisTemplate.opsForValue().set(redisKey, otp, 10, TimeUnit.MINUTES);
 
-        // Send email with OTP
-        MailStructure mailStructure = new MailStructure();
-        mailStructure.setSubject("Email Verification");
-        mailStructure.setMessage("Your OTP for email verification is: " + otp);
-        mailService.sendMail(employeeDto.getEmail(), mailStructure);
+//        // Send email with OTP
+//        MailStructure mailStructure = new MailStructure();
+//        mailStructure.setSubject("Email Verification");
+//        mailStructure.setMessage("Your OTP for email verification is: " + otp);
+//        mailService.sendMail(employeeDto.getEmail(), mailStructure);
+
+        // Publish to Message Queue instead of sync send
+        String subject = "Email Verification";
+        String message = "Your OTP for email verification is: " + otp;
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EMAIL_QUEUE, new MessageDto(
+                employeeDto.getEmail(),
+                subject,
+                message
+        ));
 
         User savedUser = userRepository.save(user);
 
@@ -261,11 +275,17 @@ public class UserService {
             String redisKey = "reset-" + userOpt.get().getEmail();
             redisTemplate.opsForValue().set(redisKey, reset, 10, TimeUnit.MINUTES);
 
-            // Send email with OTP
-            MailStructure mailStructure = new MailStructure();
-            mailStructure.setSubject("Email Verification");
-            mailStructure.setMessage("Your OTP for reset password: " + reset);
-            mailService.sendMail(userOpt.get().getEmail(), mailStructure);
+//            // Send email with OTP
+//            MailStructure mailStructure = new MailStructure();
+//            mailStructure.setSubject("Email Verification");
+//            mailStructure.setMessage("Your OTP for reset password: " + reset);
+//            mailService.sendMail(userOpt.get().getEmail(), mailStructure);
+
+            // Publish to Message Queue
+            String subject = "Password Reset";
+            String message = "Your OTP for reset password is: " + reset;
+            rabbitTemplate.convertAndSend(RabbitMQConfig.EMAIL_QUEUE, new MessageDto(userOpt.get().getEmail(), subject, message));
+
             return ResponseEntity.ok("OTP for password reset sent successfully!");
         } catch (Exception ex) {
             System.out.println("Error resetting password: " + ex.getMessage());

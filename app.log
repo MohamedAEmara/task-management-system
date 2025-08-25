@@ -1,4 +1,3 @@
-nohup: ignoring input
 [INFO] Scanning for projects...
 [INFO] 
 [INFO] ---------------------< com.emara:task-management >----------------------
@@ -10,16 +9,18 @@ nohup: ignoring input
 [INFO] 
 [INFO] --- resources:3.3.1:resources (default-resources) @ task-management ---
 [INFO] Copying 1 resource from src/main/resources to target/classes
-[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 3 resources from src/main/resources to target/classes
 [INFO] 
 [INFO] --- compiler:3.14.0:compile (default-compile) @ task-management ---
-[INFO] Nothing to compile - all classes are up to date.
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 49 source files with javac [debug parameters release 21] to target/classes
 [INFO] 
 [INFO] --- resources:3.3.1:testResources (default-testResources) @ task-management ---
 [INFO] skip non existing resourceDirectory /home/emara/work/task-management-system/src/test/resources
 [INFO] 
 [INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ task-management ---
-[INFO] Nothing to compile - all classes are up to date.
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
 [INFO] 
 [INFO] <<< spring-boot:3.5.4:run (default-cli) < test-compile @ task-management <<<
 [INFO] 
@@ -36,28 +37,28 @@ nohup: ignoring input
 
  :: Spring Boot ::                (v3.5.4)
 
-2025-08-02T12:25:03.955+03:00  INFO 340471 --- [task-management] [           main] c.emara.task.TaskManagementApplication   : Starting TaskManagementApplication using Java 21.0.8 with PID 340471 (/home/emara/work/task-management-system/target/classes started by emara in /home/emara/work/task-management-system)
-2025-08-02T12:25:03.961+03:00  INFO 340471 --- [task-management] [           main] c.emara.task.TaskManagementApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-08-02T12:25:05.496+03:00  INFO 340471 --- [task-management] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-08-02T12:25:05.503+03:00  INFO 340471 --- [task-management] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-08-02T12:25:05.828+03:00  INFO 340471 --- [task-management] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 285 ms. Found 2 JPA repository interfaces.
-2025-08-02T12:25:06.635+03:00  INFO 340471 --- [task-management] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-08-02T12:25:06.655+03:00  INFO 340471 --- [task-management] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-08-02T12:25:07.007+03:00  INFO 340471 --- [task-management] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
-2025-08-02T12:25:07.103+03:00  INFO 340471 --- [task-management] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-08-02T12:25:07.104+03:00  INFO 340471 --- [task-management] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3064 ms
-2025-08-02T12:25:07.556+03:00  INFO 340471 --- [task-management] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-08-02T12:25:08.050+03:00  INFO 340471 --- [task-management] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1d2046bb
-2025-08-02T12:25:08.052+03:00  INFO 340471 --- [task-management] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-08-02T12:25:08.103+03:00  INFO 340471 --- [task-management] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/task-management-system (MySQL 8.0)
-2025-08-02T12:25:08.625+03:00  INFO 340471 --- [task-management] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.038s)
-2025-08-02T12:25:08.650+03:00  INFO 340471 --- [task-management] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema `task-management-system`: 1
-2025-08-02T12:25:08.656+03:00  INFO 340471 --- [task-management] [           main] o.f.core.internal.command.DbMigrate      : Schema `task-management-system` is up to date. No migration necessary.
-2025-08-02T12:25:08.755+03:00  INFO 340471 --- [task-management] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-08-02T12:25:08.811+03:00  INFO 340471 --- [task-management] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
-2025-08-02T12:25:08.845+03:00  INFO 340471 --- [task-management] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-08-02T12:25:09.121+03:00  INFO 340471 --- [task-management] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-08-02T12:25:09.221+03:00  INFO 340471 --- [task-management] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-08-25T21:41:38.781+03:00  INFO 608225 --- [task-management] [           main] c.emara.task.TaskManagementApplication   : Starting TaskManagementApplication using Java 21.0.8 with PID 608225 (/home/emara/work/task-management-system/target/classes started by emara in /home/emara/work/task-management-system)
+2025-08-25T21:41:38.786+03:00  INFO 608225 --- [task-management] [           main] c.emara.task.TaskManagementApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-08-25T21:41:40.330+03:00  INFO 608225 --- [task-management] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-08-25T21:41:40.331+03:00  INFO 608225 --- [task-management] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-25T21:41:40.488+03:00  INFO 608225 --- [task-management] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 147 ms. Found 5 JPA repository interfaces.
+2025-08-25T21:41:41.215+03:00  INFO 608225 --- [task-management] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-08-25T21:41:41.229+03:00  INFO 608225 --- [task-management] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-25T21:41:41.230+03:00  INFO 608225 --- [task-management] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-25T21:41:41.275+03:00  INFO 608225 --- [task-management] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-25T21:41:41.277+03:00  INFO 608225 --- [task-management] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2431 ms
+2025-08-25T21:41:41.650+03:00  INFO 608225 --- [task-management] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-25T21:41:42.006+03:00  INFO 608225 --- [task-management] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4b50c21
+2025-08-25T21:41:42.008+03:00  INFO 608225 --- [task-management] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-25T21:41:42.055+03:00  INFO 608225 --- [task-management] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/task-management-system (MySQL 8.0)
+2025-08-25T21:41:42.464+03:00  INFO 608225 --- [task-management] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.031s)
+2025-08-25T21:41:42.484+03:00  INFO 608225 --- [task-management] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema `task-management-system`: 1
+2025-08-25T21:41:42.488+03:00  INFO 608225 --- [task-management] [           main] o.f.core.internal.command.DbMigrate      : Schema `task-management-system` is up to date. No migration necessary.
+2025-08-25T21:41:42.581+03:00  INFO 608225 --- [task-management] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-25T21:41:42.620+03:00  INFO 608225 --- [task-management] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-25T21:41:42.649+03:00  INFO 608225 --- [task-management] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-25T21:41:42.885+03:00  INFO 608225 --- [task-management] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-25T21:41:42.968+03:00  INFO 608225 --- [task-management] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0.43
@@ -65,71 +66,59 @@ nohup: ignoring input
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-08-02T12:25:10.317+03:00  INFO 340471 --- [task-management] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-08-02T12:25:10.420+03:00  INFO 340471 --- [task-management] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-25T21:41:43.895+03:00  INFO 608225 --- [task-management] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-25T21:41:43.976+03:00  INFO 608225 --- [task-management] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-25T21:41:44.717+03:00  INFO 608225 --- [task-management] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
 AuthController loaded successfully!
-2025-08-02T12:25:11.277+03:00  WARN 340471 --- [task-management] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-08-02T12:25:11.319+03:00  INFO 340471 --- [task-management] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
-2025-08-02T12:25:11.677+03:00  INFO 340471 --- [task-management] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2025-08-02T12:25:12.207+03:00  INFO 340471 --- [task-management] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-08-02T12:25:12.224+03:00  INFO 340471 --- [task-management] [           main] c.emara.task.TaskManagementApplication   : Started TaskManagementApplication in 8.872 seconds (process running for 9.497)
-2025-08-02T12:25:28.583+03:00  INFO 340471 --- [task-management] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-08-02T12:25:28.584+03:00  INFO 340471 --- [task-management] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-08-02T12:25:28.586+03:00  INFO 340471 --- [task-management] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-Ping received
-User created with ID: 1
-com.emara.task.model.User@524e34cd
-2025-08-02T12:27:27.261+03:00  WARN 340471 --- [task-management] [nio-8080-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1364, SQLState: HY000
-2025-08-02T12:27:27.261+03:00 ERROR 340471 --- [task-management] [nio-8080-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : Field 'id' doesn't have a default value
-2025-08-02T12:27:27.288+03:00 ERROR 340471 --- [task-management] [nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.orm.jpa.JpaSystemException: could not execute statement [Field 'id' doesn't have a default value] [insert into employees (department_id,hire_date,user_id) values (?,?,?)]] with root cause
+2025-08-25T21:41:44.948+03:00  INFO 608225 --- [task-management] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-25T21:41:45.769+03:00  WARN 608225 --- [task-management] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-25T21:41:46.130+03:00  INFO 608225 --- [task-management] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-08-25T21:41:46.751+03:00  INFO 608225 --- [task-management] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-08-25T21:41:46.754+03:00  INFO 608225 --- [task-management] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2025-08-25T21:41:46.798+03:00  INFO 608225 --- [task-management] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#71702d3f:0/SimpleConnection@2b16efeb [delegate=amqp://admin@127.0.0.1:5672/, localPort=59490]
+2025-08-25T21:41:46.861+03:00  INFO 608225 --- [task-management] [           main] c.emara.task.TaskManagementApplication   : Started TaskManagementApplication in 8.721 seconds (process running for 9.215)
+2025-08-25T21:42:00.034+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.task.service.ScheduledJobService     : Starting scheduled job: sendDailyIncompleteTaskNotifications
+2025-08-25T21:42:00.036+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Starting to send incomplete task notifications to all employees
+2025-08-25T21:42:00.212+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Found 5 employees to notify
+2025-08-25T21:42:00.317+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Sent incomplete tasks notification to employee (mohamedemara.dev@gmail.com): 7 tasks
+2025-08-25T21:42:00.325+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee hi has no incomplete tasks, skipping notification
+2025-08-25T21:42:00.329+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee ahmed has no incomplete tasks, skipping notification
+2025-08-25T21:42:00.335+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee ahdmed has no incomplete tasks, skipping notification
+2025-08-25T21:42:00.341+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee testuser123 has no incomplete tasks, skipping notification
+2025-08-25T21:42:00.342+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Completed sending incomplete task notifications
+2025-08-25T21:42:00.342+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.task.service.ScheduledJobService     : Successfully completed scheduled job: sendDailyIncompleteTaskNotifications
+2025-08-25T21:42:00.347+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Processing email message for: mohamedemara.dev@gmail.com
+2025-08-25T21:42:05.916+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Successfully sent email to: mohamedemara.dev@gmail.com
+2025-08-25T21:42:29.772+03:00  INFO 608225 --- [task-management] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-25T21:42:29.773+03:00  INFO 608225 --- [task-management] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-08-25T21:42:29.775+03:00  INFO 608225 --- [task-management] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+com.emara.task.dto.SignupEmployeeDto@39bfad2
+2025-08-25T21:42:30.421+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Processing email message for: test456@example.com
+2025-08-25T21:42:33.079+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Successfully sent email to: test456@example.com
+2025-08-25T21:43:00.000+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.task.service.ScheduledJobService     : Starting scheduled job: sendDailyIncompleteTaskNotifications
+2025-08-25T21:43:00.001+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Starting to send incomplete task notifications to all employees
+2025-08-25T21:43:00.025+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Found 6 employees to notify
+2025-08-25T21:43:00.040+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Sent incomplete tasks notification to employee (mohamedemara.dev@gmail.com): 7 tasks
+2025-08-25T21:43:00.044+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee hi has no incomplete tasks, skipping notification
+2025-08-25T21:43:00.046+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Processing email message for: mohamedemara.dev@gmail.com
+2025-08-25T21:43:00.048+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee ahmed has no incomplete tasks, skipping notification
+2025-08-25T21:43:00.052+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee ahdmed has no incomplete tasks, skipping notification
+2025-08-25T21:43:00.055+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee testuser123 has no incomplete tasks, skipping notification
+2025-08-25T21:43:00.059+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee testuser456 has no incomplete tasks, skipping notification
+2025-08-25T21:43:00.059+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Completed sending incomplete task notifications
+2025-08-25T21:43:00.059+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.task.service.ScheduledJobService     : Successfully completed scheduled job: sendDailyIncompleteTaskNotifications
+2025-08-25T21:43:02.877+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Successfully sent email to: mohamedemara.dev@gmail.com
+com.emara.task.dto.SignupEmployeeDto@7c9a0a35
+2025-08-25T21:43:06.054+03:00 ERROR 608225 --- [task-management] [nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Username or Email already exists] with root cause
 
-java.sql.SQLException: Field 'id' doesn't have a default value
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-9.3.0.jar:9.3.0]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114) ~[mysql-connector-j-9.3.0.jar:9.3.0]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:990) ~[mysql-connector-j-9.3.0.jar:9.3.0]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1168) ~[mysql-connector-j-9.3.0.jar:9.3.0]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1103) ~[mysql-connector-j-9.3.0.jar:9.3.0]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1450) ~[mysql-connector-j-9.3.0.jar:9.3.0]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1086) ~[mysql-connector-j-9.3.0.jar:9.3.0]
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61) ~[HikariCP-6.3.1.jar:na]
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java) ~[HikariCP-6.3.1.jar:na]
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.performNonBatchedMutation(AbstractMutationExecutor.java:134) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:55) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:104) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.action.internal.EntityInsertAction.execute(EntityInsertAction.java:110) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:644) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:511) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:414) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:41) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1429) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:491) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:2354) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:1978) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:439) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:169) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:267) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:101) ~[hibernate-core-6.6.22.Final.jar:6.6.22.Final]
-	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:562) ~[spring-orm-6.2.9.jar:6.2.9]
-	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:795) ~[spring-tx-6.2.9.jar:6.2.9]
-	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:758) ~[spring-tx-6.2.9.jar:6.2.9]
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:698) ~[spring-tx-6.2.9.jar:6.2.9]
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:416) ~[spring-tx-6.2.9.jar:6.2.9]
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.9.jar:6.2.9]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.9.jar:6.2.9]
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.2.9.jar:6.2.9]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.9.jar:6.2.9]
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165) ~[spring-data-jpa-3.5.2.jar:3.5.2]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.9.jar:6.2.9]
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.2.9.jar:6.2.9]
-	at jdk.proxy2/jdk.proxy2.$Proxy160.save(Unknown Source) ~[na:na]
-	at com.emara.task.service.EmployeeService.addEmployee(EmployeeService.java:15) ~[classes/:na]
-	at com.emara.task.service.UserService.createEmployeeUser(UserService.java:67) ~[classes/:na]
-	at com.emara.task.controller.AuthController.signup(AuthController.java:36) ~[classes/:na]
+java.lang.RuntimeException: Username or Email already exists
+	at com.emara.task.service.UserService.createEmployeeUser(UserService.java:83) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.9.jar:6.2.9]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:724) ~[spring-aop-6.2.9.jar:6.2.9]
+	at com.emara.task.service.UserService$$SpringCGLIB$$0.createEmployeeUser(<generated>) ~[classes/:na]
+	at com.emara.task.controller.AuthController.signup(AuthController.java:43) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.9.jar:6.2.9]
@@ -186,7 +175,7 @@ java.sql.SQLException: Field 'id' doesn't have a default value
 	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
 	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.5.2.jar:6.5.2]
 	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.5.2.jar:6.5.2]
-	at com.emara.task.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:52) ~[classes/:na]
+	at com.emara.task.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:58) ~[classes/:na]
 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.9.jar:6.2.9]
 	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
 	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.5.2.jar:6.5.2]
@@ -267,22 +256,192 @@ java.sql.SQLException: Field 'id' doesn't have a default value
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
 	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
 
-Ping received
-2025-08-02T12:29:28.658+03:00  INFO 340471 --- [task-management] [ionShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-08-02T12:29:28.664+03:00  INFO 340471 --- [task-management] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-08-02T12:29:28.743+03:00  INFO 340471 --- [task-management] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-08-02T12:29:28.750+03:00  INFO 340471 --- [task-management] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-08-02T12:29:28.760+03:00  INFO 340471 --- [task-management] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  04:29 min
-[INFO] Finished at: 2025-08-02T12:29:28+03:00
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.4:run (default-cli) on project task-management: Process terminated with exit code: 143 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+2025-08-25T21:44:00.000+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.task.service.ScheduledJobService     : Starting scheduled job: sendDailyIncompleteTaskNotifications
+2025-08-25T21:44:00.001+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Starting to send incomplete task notifications to all employees
+2025-08-25T21:44:00.023+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Found 5 employees to notify
+2025-08-25T21:44:00.035+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Sent incomplete tasks notification to employee (mohamedemara.dev@gmail.com): 7 tasks
+2025-08-25T21:44:00.038+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee hi has no incomplete tasks, skipping notification
+2025-08-25T21:44:00.041+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee ahdmed has no incomplete tasks, skipping notification
+2025-08-25T21:44:00.041+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Processing email message for: mohamedemara.dev@gmail.com
+2025-08-25T21:44:00.044+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee testuser123 has no incomplete tasks, skipping notification
+2025-08-25T21:44:00.046+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee testuser456 has no incomplete tasks, skipping notification
+2025-08-25T21:44:00.047+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Completed sending incomplete task notifications
+2025-08-25T21:44:00.047+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.task.service.ScheduledJobService     : Successfully completed scheduled job: sendDailyIncompleteTaskNotifications
+2025-08-25T21:44:02.492+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Successfully sent email to: mohamedemara.dev@gmail.com
+com.emara.task.dto.SignupEmployeeDto@4ea1dd5f
+2025-08-25T21:44:51.526+03:00 ERROR 608225 --- [task-management] [nio-8080-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: Username or Email already exists] with root cause
+
+java.lang.RuntimeException: Username or Email already exists
+	at com.emara.task.service.UserService.createEmployeeUser(UserService.java:83) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.9.jar:6.2.9]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:724) ~[spring-aop-6.2.9.jar:6.2.9]
+	at com.emara.task.service.UserService$$SpringCGLIB$$0.createEmployeeUser(<generated>) ~[classes/:na]
+	at com.emara.task.controller.AuthController.signup(AuthController.java:43) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.9.jar:6.2.9]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.9.jar:6.2.9]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.9.jar:6.2.9]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.9.jar:6.2.9]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.9.jar:6.2.9]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.9.jar:6.2.9]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.9.jar:6.2.9]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.9.jar:6.2.9]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.43.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.9.jar:6.2.9]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.43.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.43.jar:10.1.43]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at com.emara.task.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:58) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.5.2.jar:6.5.2]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319) ~[spring-security-config-6.5.2.jar:6.5.2]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267) ~[spring-webmvc-6.2.9.jar:6.2.9]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240) ~[spring-security-config-6.5.2.jar:6.5.2]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.9.jar:6.2.9]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1769) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1189) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.43.jar:10.1.43]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+com.emara.task.dto.SignupEmployeeDto@637e615
+2025-08-25T21:44:59.650+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Processing email message for: ahmedemara16671@gmail.com
+2025-08-25T21:45:00.000+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.task.service.ScheduledJobService     : Starting scheduled job: sendDailyIncompleteTaskNotifications
+2025-08-25T21:45:00.000+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Starting to send incomplete task notifications to all employees
+2025-08-25T21:45:00.037+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Found 6 employees to notify
+2025-08-25T21:45:00.056+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Sent incomplete tasks notification to employee (mohamedemara.dev@gmail.com): 7 tasks
+2025-08-25T21:45:00.060+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee hi has no incomplete tasks, skipping notification
+2025-08-25T21:45:00.063+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee ahdmed has no incomplete tasks, skipping notification
+2025-08-25T21:45:00.066+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee testuser123 has no incomplete tasks, skipping notification
+2025-08-25T21:45:00.069+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee testuser456 has no incomplete tasks, skipping notification
+2025-08-25T21:45:00.071+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee ahmed has no incomplete tasks, skipping notification
+2025-08-25T21:45:00.071+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Completed sending incomplete task notifications
+2025-08-25T21:45:00.072+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.task.service.ScheduledJobService     : Successfully completed scheduled job: sendDailyIncompleteTaskNotifications
+2025-08-25T21:45:01.982+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Successfully sent email to: ahmedemara16671@gmail.com
+2025-08-25T21:45:01.985+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Processing email message for: mohamedemara.dev@gmail.com
+2025-08-25T21:45:04.481+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Successfully sent email to: mohamedemara.dev@gmail.com
+2025-08-25T21:46:00.000+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.task.service.ScheduledJobService     : Starting scheduled job: sendDailyIncompleteTaskNotifications
+2025-08-25T21:46:00.000+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Starting to send incomplete task notifications to all employees
+2025-08-25T21:46:00.044+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Found 6 employees to notify
+2025-08-25T21:46:00.069+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Sent incomplete tasks notification to employee (mohamedemara.dev@gmail.com): 7 tasks
+2025-08-25T21:46:00.070+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Processing email message for: mohamedemara.dev@gmail.com
+2025-08-25T21:46:00.073+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee hi has no incomplete tasks, skipping notification
+2025-08-25T21:46:00.076+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee ahdmed has no incomplete tasks, skipping notification
+2025-08-25T21:46:00.079+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee testuser123 has no incomplete tasks, skipping notification
+2025-08-25T21:46:00.084+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee testuser456 has no incomplete tasks, skipping notification
+2025-08-25T21:46:00.091+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Employee ahmed has no incomplete tasks, skipping notification
+2025-08-25T21:46:00.091+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.t.service.TaskNotificationService    : Completed sending incomplete task notifications
+2025-08-25T21:46:00.091+03:00  INFO 608225 --- [task-management] [   scheduling-1] c.e.task.service.ScheduledJobService     : Successfully completed scheduled job: sendDailyIncompleteTaskNotifications
+2025-08-25T21:46:02.798+03:00  INFO 608225 --- [task-management] [ntContainer#0-1] c.e.task.service.EmailMessageConsumer    : Successfully sent email to: mohamedemara.dev@gmail.com

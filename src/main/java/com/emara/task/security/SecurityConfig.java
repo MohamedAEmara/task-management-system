@@ -27,6 +27,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                     .requestMatchers("/auth/**").permitAll()
+                    .requestMatchers("/auth/signup/employee").permitAll() // Explicitly permit this endpoint
                     .requestMatchers("/mail/**").permitAll() // Allow mail endpoints for testing
                     .requestMatchers("/department/add").hasRole("MANAGER")
                     .requestMatchers("/department/remove").hasRole("MANAGER")

@@ -36,8 +36,10 @@ public class AuthController {
         return "pong";
     }
 
-    @PostMapping("/signup/employee")
+//    @PostMapping("/signup/employee")
+    @PostMapping
     public User signup(@RequestBody SignupEmployeeDto employeeDto) {
+        System.out.println(employeeDto);
         return userService.createEmployeeUser(employeeDto);
     }
 

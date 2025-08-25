@@ -24,7 +24,7 @@ import java.util.Map;
 @EnableCaching
 public class CacheConfig {
 
-    @Bean
+    @Bean("redisObjectMapper")
     public ObjectMapper redisObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);

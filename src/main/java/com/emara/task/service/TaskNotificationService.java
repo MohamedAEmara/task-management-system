@@ -1,5 +1,7 @@
 package com.emara.task.service;
 
+import com.emara.task.config.RabbitMQConfig;
+import com.emara.task.dto.MessageDto;
 import com.emara.task.model.Employee;
 import com.emara.task.model.MailStructure;
 import com.emara.task.model.Task;
@@ -8,6 +10,7 @@ import com.emara.task.repo.EmployeeRepository;
 import com.emara.task.repo.TaskRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +29,9 @@ public class TaskNotificationService {
     
     @Autowired
     private MailService mailService;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
     
     public void sendIncompleteTasksNotification() {
         logger.info("Starting to send incomplete task notifications to all employees");
@@ -82,8 +88,9 @@ public class TaskNotificationService {
         
         mailStructure.setMessage(messageBuilder.toString());
         
-        // Send the email
-        mailService.sendMail(userEmail, mailStructure);
+//        // Send the email
+//        mailService.sendMail(userEmail, mailStructure);
+        rabbitTemplate.convertAndSend(RabbitMQConfig.EMAIL_QUEUE, new MessageDto(userEmail, mailStructure.getSubject(), mailStructure.getMessage()));
         logger.info("Sent incomplete tasks notification to {} ({}): {} tasks", userName, userEmail, incompleteTasksCount);
     }
 }
