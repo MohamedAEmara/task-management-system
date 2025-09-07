@@ -32,5 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 
-### application.properties secret values
+### application.properties ###
+/target/classes/application.properties
 /src/main/resources/application.properties
+*.properties
