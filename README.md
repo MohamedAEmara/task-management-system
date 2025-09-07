@@ -19,7 +19,7 @@ A comprehensive task management system built with Spring Boot that provides func
 [![technologies](https://skillicons.dev/icons?i=spring,maven,mysql,hibernate,redis,git,github,docker,postman,rabbitmq)](#backend)
 
 ## Database Schema
-![Database Schema](./src/main/resources/static/images/db-schema.png)
+![Database Schema](./src/main/resources/static/images/database-schema.png)
 
 ### Core Framework
 - **Spring Boot 3.5.4** - Main application framework
